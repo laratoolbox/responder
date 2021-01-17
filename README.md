@@ -1,47 +1,94 @@
-# :package_title
+# Laravel Responder
 
-:package_description
+Easily send response to api requests
 
-## Requirement
+# Installation
 
-```
-Laravel >= 5.x
-```
-
-## Installation
-
-Install via composer
+You can install the package via composer:
 
 ```bash
-$ composer require :package_vendor/:package_name
+$ composer require laratoolbox/responder
 ```
 
-## Usage
+# Usage
 
-...
+You can use helper `responder` function like below.
 
-## Testing
-
-``` bash
-$ composer test
+```
+return responder()
+        ->addHeader('X-Secret1', 'secret1')
+        ->addHeader('X-Secret2', 'secret2')
+        ->addHeader('X-Secret3', 'secret3')
+        ->setData(\App\Models\User::select('id', 'name')->find(1))
+        ->addExtraData('custom-key', 'custom-value')
+        ->send();
 ```
 
-## Changelog
+```text
+// response
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Secret1: secret1
+X-Secret2: secret2
+X-Secret3: secret3
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+{
+    "code": 0,
+    "message": null,
+    "data": {
+        "id": 1,
+        "name": "Semih ERDOGAN"
+    },
+    "custom-key": "custom-value"
+}
+```
 
-## Security
+Or you can use `ResponderException`
+```php
+throw new \LaraToolbox\Responder\Exceptions\ResponderException(
+    \LaraToolbox\Responder\ResponseCodes::ERROR,
+    $customData = [1,2,3]
+);
+```
 
-If you discover any security related issues, please email instead of using the issue tracker.
+```text
+// response
+HTTP/1.1 200 OK
+Content-Type: application/json
 
-## Contributing
+{
+    "code": 120,
+    "message": "An error occurred",
+    "data": [
+        1,
+        2,
+        3
+    ]
+}
+```
+
+# Testing
+
+// TODO:
+
+# Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+# Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Credits
+# Security
 
-- [All contributors](https://github.com/laratoolbox/:package_name/graphs/contributors)
+If you discover any security related issues, please email hasansemiherdogan@gmail.com instead of using the issue tracker.
 
-## License
+ Credits
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+- [Semih ERDOGAN](https://github.com/laratoolbox)
+- [Dincer DEMIRCIOGLU](https://github.com/dinncer)
+- [All contributors](https://github.com/laratoolbox/database-viewer/graphs/contributors)
+
+# License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

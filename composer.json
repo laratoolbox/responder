@@ -1,17 +1,17 @@
 {
-    "name": ":package_vendor/:package_name",
-    "description": ":package_description",
+    "name": "LaraToolbox/responder",
+    "description": "Easily return json responses for laravel",
     "license": "MIT",
     "keywords": [
         "laravel",
-        ":package_name"
+        "responder"
     ],
     "type": "library",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_homepage",
+            "name": "Semih ERDOGAN",
+            "email": "hasansemiherdogan@gmail.com",
+            "homepage": "https://semiherdogan.net",
             "role": "Developer"
         }
     ],
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":package_vendor\\:package_name\\": "src"
+            "LaraToolbox\\responder\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":package_vendor\\:package_name\\Tests\\": "tests"
+            "LaraToolbox\\responder\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,7 +44,7 @@
     "extra": {
       "laravel": {
           "providers": [
-              ":package_vendor\\:package_name\\PackageServiceProvider"
+              "LaraToolbox\\responder\\PackageServiceProvider"
           ]
       }
   }

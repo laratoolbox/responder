@@ -1,6 +1,6 @@
 <?php
 
-namespace :package_vendor\:package_name;
+namespace LaraToolbox\Responder;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -11,9 +11,7 @@ class PackageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if ($this->app->runningInConsole()) {
-        //      //
-        // }
+        //
     }
 
     /**
@@ -21,6 +19,8 @@ class PackageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(\LaraToolbox\Responder\Responder::class, function($app) {
+            return new \LaraToolbox\Responder\Responder();
+        });
     }
 }

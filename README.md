@@ -1,6 +1,6 @@
 # Laravel Responder
 
-Easily send json responses to requests.
+Easily respond to api requests.
 
 # Installation
 
@@ -12,7 +12,7 @@ $ composer require laratoolbox/responder
 
 # Usage
 
-After installation you can use helper `responder` function.
+After installation, you can use helper `responder` function.
 
 ```
 return responder()
@@ -44,7 +44,7 @@ X-Secret3: secret3
 }
 ```
 
-Also you have `ResponderException` that you can throw it any time required.
+Also, you have `ResponderException` that you can throw it any time required.
 
 ```php
 throw new \LaraToolbox\Responder\Exceptions\ResponderException(

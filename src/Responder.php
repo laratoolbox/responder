@@ -12,23 +12,16 @@ class Responder
     private $headers = [];
 
     /**
+     * @param null|mixed $data
      * @return \Illuminate\Http\JsonResponse
      */
-    public function send()
+    public function send($data = null)
     {
-        return response()
-            ->json(
-                array_merge(
-                    [
-                        'code' => $this->responseCode,
-                        'message' => $this->responseMessage,
-                        'data' => $this->responseData,
-                    ],
-                    $this->extraData
-                )
-            )
-            ->withHeaders($this->headers)
-            ->setStatusCode($this->httpStatus);
+        if (!is_null($data)) {
+            $this->setData($data);
+        }
+
+        return $this->sendResponse();
     }
 
     /**
@@ -89,5 +82,25 @@ class Responder
         $this->headers[$key] = $value;
 
         return $this;
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    private function sendResponse()
+    {
+        return response()
+            ->json(
+                array_merge(
+                    [
+                        'code' => $this->responseCode,
+                        'message' => $this->responseMessage,
+                        'data' => $this->responseData,
+                    ],
+                    $this->extraData
+                )
+            )
+            ->withHeaders($this->headers)
+            ->setStatusCode($this->httpStatus);
     }
 }

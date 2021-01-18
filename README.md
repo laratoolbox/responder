@@ -14,7 +14,7 @@ $ composer require laratoolbox/responder
 
 After installation, you can use helper `responder` function.
 
-```
+```php
 return responder()
         ->addHeader('X-Secret1', 'secret1')
         ->addHeader('X-Secret2', 'secret2')

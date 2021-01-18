@@ -1,6 +1,6 @@
 {
     "name": "LaraToolbox/responder",
-    "description": "Easily return json responses for laravel",
+    "description": "Easily respond to api requests for laravel.",
     "license": "MIT",
     "keywords": [
         "laravel",

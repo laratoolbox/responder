@@ -2,6 +2,9 @@
 
 Easily respond to api requests.
 
+# Requirement
+> Laravel >= 5.5
+
 # Installation
 
 You can install the package via composer:
@@ -69,6 +72,26 @@ Content-Type: application/json
     ]
 }
 ```
+
+### All methods that responder has.
+#### send
+  - Parameter `null|mixed $data` (if set calls setData method behind the scenes)
+#### setHttpStatusCode
+  - Parameter `int $statusCode`
+#### setResponseMeta
+  - Parameter `array $responseMeta`
+#### setResponseCode
+  - Parameter `int $responseCode`
+#### setResponseMessage
+  - Parameter `string $responseMessage`
+#### setData
+  - Parameter `mixed $data`
+#### addExtraData
+  - Parameter `string $key`
+  - Parameter `mixed $value`
+#### addHeader
+  - Parameter `string $key`
+- Parameter `string|integer|numeric $value`
 
 # Testing
 

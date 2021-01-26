@@ -24,11 +24,7 @@ class Responder
         return $this->sendResponse();
     }
 
-    /**
-     * @param int $httpStatus
-     * @return \LaraToolbox\Responder\Responder
-     */
-    public function setStatusCode(int $httpStatus): self
+    public function setHttpStatusCode(int $httpStatus): self
     {
         $this->httpStatus = $httpStatus;
 
@@ -41,18 +37,28 @@ class Responder
      *
      * @see \LaraToolbox\Responder\ResponseCodes
      */
-    public function setResponseCode($response): self
+    public function setResponseMeta(array $response): self
     {
-        $this->responseCode = $response['code'];
-        $this->responseMessage = $response['message'];
+        $this->setResponseCode($response['code']);
+        $this->setResponseMessage($response['message']);
 
         return $this;
     }
 
-    /**
-     * @param mixed $data
-     * @return \LaraToolbox\Responder\Responder
-     */
+    public function setResponseCode(int $code): self
+    {
+        $this->responseCode = $code;
+
+        return $this;
+    }
+
+    public function setResponseMessage(?string $message): self
+    {
+        $this->responseMessage = $message;
+
+        return $this;
+    }
+
     public function setData($data): self
     {
         $this->responseData = $data;
@@ -60,11 +66,6 @@ class Responder
         return $this;
     }
 
-    /**
-     * @param $key
-     * @param $value
-     * @return \LaraToolbox\Responder\Responder
-     */
     public function addExtraData($key, $value): self
     {
         $this->extraData[$key] = $value;
@@ -72,11 +73,6 @@ class Responder
         return $this;
     }
 
-    /**
-     * @param $key
-     * @param $value
-     * @return \LaraToolbox\Responder\Responder
-     */
     public function addHeader($key, $value): self
     {
         $this->headers[$key] = $value;
@@ -84,9 +80,6 @@ class Responder
         return $this;
     }
 
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
     private function sendResponse()
     {
         return response()

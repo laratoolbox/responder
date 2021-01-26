@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "LaraToolbox\\responder\\": "src"
+            "LaraToolbox\\Responder\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LaraToolbox\\responder\\Tests\\": "tests"
+            "LaraToolbox\\Responder\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,7 +44,7 @@
     "extra": {
       "laravel": {
           "providers": [
-              "LaraToolbox\\responder\\PackageServiceProvider"
+              "LaraToolbox\\Responder\\PackageServiceProvider"
           ]
       }
   }

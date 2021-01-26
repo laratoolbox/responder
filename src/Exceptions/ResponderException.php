@@ -38,7 +38,7 @@ class ResponderException extends Exception
     public function render()
     {
         return responder()
-            ->setResponseCode($this->responseCode)
+            ->setResponseMeta($this->responseCode)
             ->setData($this->responseData)
             ->send();
     }
